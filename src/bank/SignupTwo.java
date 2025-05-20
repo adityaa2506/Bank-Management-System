@@ -159,6 +159,7 @@ public class SignupTwo extends JFrame implements ActionListener {
 
         setSize(1000, 700);
         setVisible(true);
+        setResizable(false);
         setTitle("Automated Teller Machine");
         setLocation(500, 50);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -174,17 +175,53 @@ public class SignupTwo extends JFrame implements ActionListener {
         String sincome = (String) income.getSelectedItem();
         String seducation = (String) educationalQualification.getSelectedItem();
         String soccupation = (String) occupation.getSelectedItem();
-        String span = pan.getText();
-        String sadhaar = adhaar.getText();
-        String seniorcitizen = sYes.isSelected() ? "Yes" : "No";
-        String existingaccount = eYes.isSelected() ? "Yes" : "No";
+        String span = pan.getText().trim();
+        String sadhaar = adhaar.getText().trim();
+        String seniorcitizen = sYes.isSelected() ? "Yes" : (sNo.isSelected() ? "No" : "");
+        String existingaccount = eYes.isSelected() ? "Yes" : (eNo.isSelected() ? "No" : "");
 
+        // --- VALIDATIONS START HERE ---
+
+        if (span.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "PAN number is required");
+            return;
+        }
+
+        if (!span.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}")) {
+            JOptionPane.showMessageDialog(null, "Enter a valid PAN number (e.g., ABCDE1234F)");
+            return;
+        }
+
+        if (sadhaar.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Aadhaar number is required");
+            return;
+        }
+
+        if (!sadhaar.matches("\\d{12}")) {
+            JOptionPane.showMessageDialog(null, "Enter a valid 12-digit Aadhaar number");
+            return;
+        }
+
+        if (seniorcitizen.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please select Senior Citizen option");
+            return;
+        }
+
+        if (existingaccount.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please select Existing Account option");
+            return;
+        }
+
+        // --- DATABASE LOGIC ---
         try {
             Conn c = new Conn();
             String query = "insert into signuptwo values('" + formno + "','" + sreligion + "','" + scategory + "','" + sincome + "','" + seducation + "','" + soccupation + "','" + span + "','" + sadhaar + "','" + seniorcitizen + "','" + existingaccount + "')";
             c.s.executeUpdate(query);
+            setVisible(false);
+            new SignupThree(formno).setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
