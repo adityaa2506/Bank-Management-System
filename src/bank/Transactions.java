@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 
 public class Transactions extends JFrame implements ActionListener {
     JButton deposit, withdrawl, fcash, mstatement, pinChange, balanceEnquiry, exit;
+    String pinNumber;
 
-    Transactions() {
-
+    Transactions(String pin, String card) {
+        this.pinNumber = pin;
         JLabel text = new JLabel("Please select your Transaction");
         text.setFont(new Font("System", Font.PLAIN, 20));
         text.setForeground(Color.white);
@@ -75,14 +76,13 @@ public class Transactions extends JFrame implements ActionListener {
     }
 
 
-
     public static void main(String[] args) {
-        new Transactions();
+        new Transactions("", "");
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource()==exit){
+        if (ae.getSource() == exit) {
             System.exit(0);
         }
     }

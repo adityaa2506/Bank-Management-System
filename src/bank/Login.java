@@ -126,7 +126,7 @@ public class Login extends JFrame implements ActionListener {
                 if (rs.next()) {
                     setVisible(false);
                     // Assumes Transactions constructor accepts PIN
-                    JOptionPane.showMessageDialog(null, "Login Success");
+                    new Transactions(pin,cardNumber).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect Card Number or PIN");
                 }
