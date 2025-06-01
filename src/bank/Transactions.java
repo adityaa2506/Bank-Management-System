@@ -9,16 +9,18 @@ import java.awt.event.ActionListener;
 public class Transactions extends JFrame implements ActionListener {
     JButton deposit, withdrawl, fcash, mstatement, pinChange, balanceEnquiry, exit;
     String pinNumber;
+    String cardNumber;
 
     Transactions(String pin, String card) {
         this.pinNumber = pin;
+        this.cardNumber = card;
         JLabel text = new JLabel("Please select your Transaction");
         text.setFont(new Font("System", Font.PLAIN, 20));
         text.setForeground(Color.white);
         text.setBounds(200, 160, 500, 80);
         add(text);
 
-        deposit = new JButton("Deposit");
+        deposit = new JButton("Cash Deposit");
         deposit.setBounds(160, 355, 120, 33);
         deposit.addActionListener(this);
         add(deposit);
@@ -84,6 +86,19 @@ public class Transactions extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == exit) {
             System.exit(0);
+        }
+        else if (ae.getSource() == deposit) {
+            new Deposit(pinNumber, cardNumber).setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == withdrawl) {
+            new Withdraw(pinNumber, cardNumber).setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == fcash) {
+            new Fcash(pinNumber, cardNumber).setVisible(true);
+            setVisible(false);
+        } else if (ae.getSource() == balanceEnquiry) {
+            new BalanceEnquiry(pinNumber, cardNumber).setVisible(true);
+            setVisible(false);
         }
     }
 }

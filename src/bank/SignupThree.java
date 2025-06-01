@@ -33,7 +33,7 @@ public class SignupThree extends JFrame implements ActionListener {
         r1.setBackground(Color.white);
         add(r1);
 
-        r2 = new JRadioButton("Fixed Deposit Account");
+        r2 = new JRadioButton("Fixed Withdraw Account");
         r2.setBounds(400, 150, 400, 30);
         r2.setFont(new Font("Segoe UI", Font.PLAIN, 20));
         r2.setBackground(Color.white);
@@ -45,7 +45,7 @@ public class SignupThree extends JFrame implements ActionListener {
         r3.setBackground(Color.white);
         add(r3);
 
-        r4 = new JRadioButton("Recurring Deposit Account");
+        r4 = new JRadioButton("Recurring Withdraw Account");
         r4.setBounds(400, 190, 400, 30);
         r4.setFont(new Font("Segoe UI", Font.PLAIN, 20));
         r4.setBackground(Color.white);
@@ -170,11 +170,11 @@ public class SignupThree extends JFrame implements ActionListener {
             if (r1.isSelected()) {
                 accountType = "Savings Account";
             } else if (r2.isSelected()) {
-                accountType = "Fixed Deposit Account";
+                accountType = "Fixed Withdraw Account";
             } else if (r3.isSelected()) {
                 accountType = "Current Account";
             } else if (r4.isSelected()) {
-                accountType = "Recurring Deposit Account";
+                accountType = "Recurring Withdraw Account";
             }
 
             if (!c7.isSelected()) {
