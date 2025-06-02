@@ -26,7 +26,10 @@ A Java-based desktop ATM simulator built using **Java Swing** for GUI and **JDBC
 
 ## 📸 Screenshots
 
-> *(Add screenshots here — e.g., login screen, deposit screen, mini statement)*
+> *![image](https://github.com/user-attachments/assets/0be6629c-f869-48c6-9eee-e46ac32bd835)
+> ![image](https://github.com/user-attachments/assets/826d851a-0bfc-4138-8649-7e921268cd72)
+
+*
 
 ---
 
